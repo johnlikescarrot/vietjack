@@ -1,0 +1,30 @@
+name: Generate AI-Optimized llms.txt
+permissions:
+  contents: write
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 2 * * 0' # Weekly updates
+
+jobs:
+  generate-llms-txt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate llms.txt with Jina AI
+        uses: kevinnkansah/llms-txt-action@v1.1.0
+        with:
+          domain: https://vietjack.com
+          outputFile: public/llms.txt
+          # backend: jina  # Default, free option
+
+      - name: Commit and push llms.txt
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: 'AI Bot'
+          author_email: 'ai-bot@your-domain.com'
+          add: 'public/llms.txt'
+          message: 'feat: update llms.txt for AI optimization'
