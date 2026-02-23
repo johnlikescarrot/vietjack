@@ -17,7 +17,7 @@ jobs:
       - name: Generate llms.txt with Jina AI
         uses: kevinnkansah/llms-txt-action@v1.1.0
         with:
-          domain: https://loigiaihay.com
+          domain: https://tuyensinh247.com
           outputFile: public/llms.txt
           # backend: jina  # Default, free option
 
